@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Fonts\MaterialIcons-Regular.ttf" />
+    <None Remove="Assets\Fonts\Nippo-Light.ttf" />
+    <None Remove="Assets\Fonts\settings.png" />
+    <None Remove="Assets\Images\device.jpg" />
+    <None Remove="Assets\Images\device.png" />
+    <None Remove="Assets\Images\Logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controls\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Fonts\MaterialIcons-Regular.ttf" />
+    <Resource Include="Assets\Fonts\Nippo-Light.ttf" />
+    <Resource Include="Assets\Fonts\settings.png" />
+    <Resource Include="Assets\Images\device.png" />
+    <Resource Include="Assets\Images\Logo.png" />
+  </ItemGroup>
+
+</Project>
