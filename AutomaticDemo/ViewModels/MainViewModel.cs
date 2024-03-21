@@ -49,7 +49,11 @@ namespace AutomaticDemo.ViewModels
 
 		public List<AlarmItemModel> AlarmsList { get; set; }
 
-		public ObservableCollection<RadarSeriesModel> RadarData {  get; set;}
+		public ObservableCollection<RadarSeriesModel> RadarData {  get; set; }
+
+		public List<PersonalItemModel> PersonalList { get; set; }
+
+		public List<WorkShopItemModel> WorkShopList { get; set; }
 
 		public MainViewModel()
         {
@@ -61,34 +65,34 @@ namespace AutomaticDemo.ViewModels
 
             #region initialize EnvironmentalMonitors
             EnvironmentalMonitors = new List<MonitorItemModel>();
-            EnvironmentalMonitors.Add(new MonitorItemModel { MonitorHeader = "光照(Lux)" });
-            EnvironmentalMonitors.Add(new MonitorItemModel { MonitorHeader = "噪音(db)" });
-            EnvironmentalMonitors.Add(new MonitorItemModel { MonitorHeader = "温度(°C)" });
-            EnvironmentalMonitors.Add(new MonitorItemModel { MonitorHeader = "湿度(%)" });
-            EnvironmentalMonitors.Add(new MonitorItemModel { MonitorHeader = "PM2.5(m³)" });
-            EnvironmentalMonitors.Add(new MonitorItemModel { MonitorHeader = "硫化氢(ppm)" });
-            EnvironmentalMonitors.Add(new MonitorItemModel { MonitorHeader = "氮气(ppm)" });
+            EnvironmentalMonitors.Add(new MonitorItemModel { MonitorHeader = "Illumination (Lux)" });
+            EnvironmentalMonitors.Add(new MonitorItemModel { MonitorHeader = "Noise (db)" });
+            EnvironmentalMonitors.Add(new MonitorItemModel { MonitorHeader = "Temperature (°C)" });
+            EnvironmentalMonitors.Add(new MonitorItemModel { MonitorHeader = "Humidity (%)" });
+            EnvironmentalMonitors.Add(new MonitorItemModel { MonitorHeader = "PM2.5 (m³)" });
+            EnvironmentalMonitors.Add(new MonitorItemModel { MonitorHeader = "Hydrogen (ppm)" });
+            EnvironmentalMonitors.Add(new MonitorItemModel { MonitorHeader = "Nitrogen (ppm)" });
             #endregion
 
             EnvironmentalMonitors[0].MonitorValue = 123.98;
 
 			#region initialize AlarmsList
 			AlarmsList = new List<AlarmItemModel>();
-			AlarmsList.Add(new AlarmItemModel { Num = "01", Message="设备温度过高", Time="2024-03-09 20:12:09", Duration = 5});
-			AlarmsList.Add(new AlarmItemModel { Num = "02", Message="车间温度过高", Time="2024-03-11 09:12:09", Duration = 5});
-			AlarmsList.Add(new AlarmItemModel { Num = "03", Message="设备转速过高", Time="2024-03-11 20:06:09", Duration = 5});
+			AlarmsList.Add(new AlarmItemModel { Num = "01", Message= "Equipment temperature too high", Time="2024-03-09 20:12:09", Duration = 5});
+			AlarmsList.Add(new AlarmItemModel { Num = "02", Message= "Workshop temperature too high", Time="2024-03-11 09:12:09", Duration = 5});
+			AlarmsList.Add(new AlarmItemModel { Num = "03", Message= "Equipment speed too high", Time="2024-03-11 20:06:09", Duration = 5});
 			#endregion
 
 			#region initialize DeviceMonitors
 			DeviceMonitors = new List<MonitorItemModel>();
-			DeviceMonitors.Add(new MonitorItemModel { MonitorHeader = "电能(Kw.h)", MonitorValue= 512.12});
-			DeviceMonitors.Add(new MonitorItemModel { MonitorHeader = "电压(V)", MonitorValue= 31.2});
-			DeviceMonitors.Add(new MonitorItemModel { MonitorHeader = "电流(A)", MonitorValue= 258.6});
-			DeviceMonitors.Add(new MonitorItemModel { MonitorHeader = "压差(kpa)", MonitorValue= 65.4});
-			DeviceMonitors.Add(new MonitorItemModel { MonitorHeader = "温度(°C)", MonitorValue= 948.9});
-			DeviceMonitors.Add(new MonitorItemModel { MonitorHeader = "振动(mm/s)", MonitorValue= 10.2});
-			DeviceMonitors.Add(new MonitorItemModel { MonitorHeader = "转速(r/min)", MonitorValue= 1000});
-			DeviceMonitors.Add(new MonitorItemModel { MonitorHeader = "气压(kpa)", MonitorValue= 24});
+			DeviceMonitors.Add(new MonitorItemModel { MonitorHeader = "Electric (Kw.h)", MonitorValue= 512.12});
+			DeviceMonitors.Add(new MonitorItemModel { MonitorHeader = "Voltage (V)", MonitorValue= 31.2});
+			DeviceMonitors.Add(new MonitorItemModel { MonitorHeader = "Current (A)", MonitorValue= 258.6});
+			DeviceMonitors.Add(new MonitorItemModel { MonitorHeader = "Pressure (kpa)", MonitorValue= 65.4});
+			DeviceMonitors.Add(new MonitorItemModel { MonitorHeader = "Temperature (°C)", MonitorValue= 948.9});
+			DeviceMonitors.Add(new MonitorItemModel { MonitorHeader = "Vibration (mm/s)", MonitorValue= 10.2});
+			DeviceMonitors.Add(new MonitorItemModel { MonitorHeader = "Speed (r/min)", MonitorValue= 1000});
+			DeviceMonitors.Add(new MonitorItemModel { MonitorHeader = "Air Pressure (kpa)", MonitorValue= 24});
 			#endregion
 
 			#region initialize Rader Data
@@ -98,6 +102,23 @@ namespace AutomaticDemo.ViewModels
             {
 				RadarData.Add(new RadarSeriesModel { Header = "Tag" + i, Value = random.Next(20,100)});
             }
+			#endregion
+
+			#region initialize Personal Data
+			PersonalList = new List<PersonalItemModel>();
+			PersonalList.Add(new PersonalItemModel { Name = "Alex", Position = "Worker", WorkingHours = 288 });
+			PersonalList.Add(new PersonalItemModel { Name = "Bob", Position = "Operator", WorkingHours = 258 });
+			PersonalList.Add(new PersonalItemModel { Name = "Charles", Position = "Inspector", WorkingHours = 212 });
+			PersonalList.Add(new PersonalItemModel { Name = "Deby", Position = "Supervisor", WorkingHours = 222 });
+            #endregion
+
+            #region initialize Workshop Data
+            WorkShopList = new List<WorkShopItemModel>();
+            WorkShopList.Add(new WorkShopItemModel { Name="SMT Workshop", TotalMachineCount=05, OperatingMachineCount=32, WaitingMachineCount=8, MalfunctionCount=2, ShutdownCount=1});
+            WorkShopList.Add(new WorkShopItemModel { Name="Packaging Workshop", TotalMachineCount=45, OperatingMachineCount=32, WaitingMachineCount=8, MalfunctionCount=2, ShutdownCount=1});
+            WorkShopList.Add(new WorkShopItemModel { Name= "Welding Workshop", TotalMachineCount=55, OperatingMachineCount=32, WaitingMachineCount=8, MalfunctionCount=2, ShutdownCount=1});
+            WorkShopList.Add(new WorkShopItemModel { Name= "Assembly Workshop", TotalMachineCount=18, OperatingMachineCount=32, WaitingMachineCount=8, MalfunctionCount=2, ShutdownCount=1});
+            WorkShopList.Add(new WorkShopItemModel { Name= "Painting Workshop", TotalMachineCount=99, OperatingMachineCount=32, WaitingMachineCount=8, MalfunctionCount=2, ShutdownCount=1});
             #endregion
         }
     }

@@ -101,8 +101,8 @@ namespace AutomaticDemo.Controls
                 text.TextAlignment = TextAlignment.Center;
                 text.Text = ItemsSources[i].Header;
                 text.Foreground = new SolidColorBrush(Color.FromArgb(100, 255, 255, 255));
-                text.SetValue(Canvas.LeftProperty, raduis + (raduis - 10) * Math.Cos((step * i - 90) * Math.PI / 180));
-                text.SetValue(Canvas.TopProperty, raduis + (raduis - 10) * Math.Sin((step * i - 90) * Math.PI / 180));
+                text.SetValue(Canvas.LeftProperty, raduis + (raduis - 10) * Math.Cos((step * i - 90) * Math.PI / 180)-30);
+                text.SetValue(Canvas.TopProperty, raduis + (raduis - 10) * Math.Sin((step * i - 90) * Math.PI / 180)-7);
                 this.mainCanvas.Children.Add(text);
             }
         }

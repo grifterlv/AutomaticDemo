@@ -91,9 +91,9 @@
                 </StackPanel.Resources>
                 
                 <TextBlock Text="&#xf049;" FontFamily="../Assets/Fonts/#Material Icons"
-                           Foreground="#55FFFFFF" FontSize="20" VerticalAlignment="Center"/>
-                <TextBlock Text="机台&#13;总数" VerticalAlignment="Center" Margin="10,0"
-                           Foreground="#99FFFFFF" FontSize="10"/>
+                           Foreground="#55FFFFFF" FontSize="25" VerticalAlignment="Center"/>
+                <TextBlock Text="Total&#13;Number" VerticalAlignment="Center" Margin="10,0"
+                           Foreground="#99FFFFFF"/>
                 <ItemsControl ItemsSource="{Binding Total}" ItemTemplate="{StaticResource dataTemp}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -102,7 +102,7 @@
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
 
-                <TextBlock Text="生产计数" VerticalAlignment="Center" Foreground="#99FFFFFF"
+                <TextBlock Text="Productionl&#13;Count" VerticalAlignment="Center" Foreground="#99FFFFFF"
                            Margin="20,0,10,0" />
                 <ItemsControl ItemsSource="{Binding ProductionCount}" ItemTemplate="{StaticResource dataTemp}">
                     <ItemsControl.ItemsPanel>
@@ -112,7 +112,7 @@
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
 
-                <TextBlock Text="不良计数" VerticalAlignment="Center" Foreground="#99FFFFFF"
+                <TextBlock Text="Defect&#13;Count" VerticalAlignment="Center" Foreground="#99FFFFFF"
                            Margin="20,0,10,0"/>
                 <ItemsControl ItemsSource="{Binding BadProductionCount}" ItemTemplate="{StaticResource dataTemp}">
                     <ItemsControl.ItemsPanel>
@@ -124,10 +124,8 @@
             </StackPanel>
 
             <Button Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" 
-                    Margin="20,0" Content="配置" Tag="&#xe8b8;" Style="{StaticResource ButtonStyle}"
-                    Height="33" Width="80">
-                
-            </Button>
+                    Margin="20,0" Content="Settings" Tag="&#xe8b8;" Style="{StaticResource ButtonStyle}"
+                    Height="33" Width="100" FontWeight="Normal"/>
         </Grid>
 
         <!--second row-->
@@ -140,8 +138,8 @@
             
             <!--first column-->
             <UniformGrid Columns="1" Margin="10,0">
-                
-                <GroupBox Header="环境">
+
+                <GroupBox Header="Environment" FontWeight="Normal">
                     <ItemsControl ItemsSource="{Binding EnvironmentalMonitors}" VerticalAlignment="Center">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -160,13 +158,13 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </GroupBox>
-                
-                <GroupBox Header="产能">
+
+                <GroupBox Header="Capacity" FontWeight="Normal">
                     <Grid>
                         <lcw:CartesianChart Margin="10,35,10,2">
                             <lcw:CartesianChart.Series>
                                 <lcw:ColumnSeries Values="300,400,480,450,380,450,450,330,340,280,220"
-                                                  MaxColumnWidth="10" Title="生产计数">
+                                                  MaxColumnWidth="10" Title="Production Count">
                                     <lcw:ColumnSeries.Fill>
                                         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                                             <GradientStop Color="#FF3FBBE6" Offset="0"/>
@@ -175,7 +173,7 @@
                                     </lcw:ColumnSeries.Fill>
                                 </lcw:ColumnSeries>
                                 <lcw:ColumnSeries Values="15,55,15,40,38,45,25,15"
-                                                  MaxColumnWidth="10" Title="不良计数">
+                                                  MaxColumnWidth="10" Title="Defect Count">
                                     <lcw:ColumnSeries.Fill>
                                         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                                             <GradientStop Color="#FFFB9A9A" Offset="0"/>
@@ -202,17 +200,17 @@
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right"
                                     Margin="10">
                             <Border Width="6" Height="6" Background="#FF2BEDF1" Margin="5,0"/>
-                            <TextBlock Text="生产计数" FontSize="10" Foreground="#44FFFFFF"/>
+                            <TextBlock Text="Production Count" FontSize="10" Foreground="#44FFFFFF"/>
                             <Border Width="6" Height="6" Background="#FFFF5151" Margin="5,0"/>
-                            <TextBlock Text="不良计数" FontSize="10" Foreground="#44FFFFFF"/>
+                            <TextBlock Text="Defect Count" FontSize="10" Foreground="#44FFFFFF"/>
                         </StackPanel>
                     </Grid>
                 </GroupBox>
-                
-                <GroupBox Header="质量">
+
+                <GroupBox Header="Quality" FontWeight="Normal">
                     <lcw:CartesianChart Margin="10,35,10,2">
                         <lcw:CartesianChart.Series>
-                            <lcw:LineSeries Values="15,55,15,40,38,45,25,15,45,25,15,40" Title="不良计数"
+                            <lcw:LineSeries Values="15,55,15,40,38,45,25,15,45,25,15,40" Title="Defect Count"
                                             PointGeometrySize="0" Stroke="#FF2BEDF1" StrokeThickness="1">
                                 <lcw:LineSeries.Fill>
                                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
@@ -249,7 +247,7 @@
                     <RowDefinition Height="1.5*"/>
                 </Grid.RowDefinitions>
                 <Border Width="400" Height="220" Grid.RowSpan="2" VerticalAlignment="Top"
-                        HorizontalAlignment="Right">
+                        HorizontalAlignment="Center">
                     <Border.Background>
                         <ImageBrush ImageSource="../Assets/Images/device.png" Stretch="Uniform"/>
                     </Border.Background>
@@ -264,7 +262,7 @@
                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#99FFFFFF"
                                FontWeight="Normal">
                         <Run Text="&#xe004;" FontFamily="../Assets/Fonts/#Material Icons" BaselineAlignment="Center"/>
-                        <Run Text="报警记录"/>
+                        <Run Text="Alarm Log"/>
                     </TextBlock>
 
                     <ItemsControl Grid.Row="1" ItemsSource="{Binding AlarmsList}">
@@ -274,9 +272,9 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="20"/>
                                         <ColumnDefinition Width="30"/>
-                                        <ColumnDefinition Width="1.3*"/>
+                                        <ColumnDefinition Width="1*"/>
                                         <ColumnDefinition/>
-                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="0.8*"/>
                                     </Grid.ColumnDefinitions>
                                     <Border Width="6" Height="6" Background="IndianRed" CornerRadius="3"
                                             VerticalAlignment="Center" HorizontalAlignment="Center"/>
@@ -286,7 +284,7 @@
                                                Foreground="#992BEDF1" FontWeight="Normal"/>
                                     <TextBlock Text="{Binding Time}" Grid.Column="3" VerticalAlignment="Center"
                                                Foreground="#992BEDF1" FontWeight="Normal"/>
-                                    <TextBlock Text="{Binding Duration, StringFormat=时长{0}秒}" Grid.Column="4" VerticalAlignment="Center"
+                                    <TextBlock Text="{Binding Duration, StringFormat=Duration {0} s}" Grid.Column="4" VerticalAlignment="Center"
                                                HorizontalAlignment="Center" Foreground="#992BEDF1" FontWeight="Normal"/>
                                 </Grid>
                             </DataTemplate>
@@ -295,7 +293,7 @@
                 </Grid>
 
                 <!--third row of second column-->
-                <GroupBox Grid.Row="2" Header="数据异常报警比例" Margin="0,5">
+                <GroupBox Grid.Row="2" Header="Alarm Ratio" Margin="0,5" FontWeight="Normal">
                     <lcw:PieChart InnerRadius="45" Margin="0,40,0,20">
                         <lcw:PieChart.Resources>
                             <Style TargetType="lcw:PieSeries">
@@ -312,12 +310,11 @@
                             </Style>
                         </lcw:PieChart.Resources>
                         <lcw:PieChart.Series>
-                            <lcw:PieSeries Values="19" StrokeThickness="0" LabelPosition="OutsideSlice" DataLabels="True" Title="压差"/>
-                            <lcw:PieSeries Values="20" StrokeThickness="0" LabelPosition="OutsideSlice" DataLabels="True" Title="光照"/>
-                            <lcw:PieSeries Values="50" StrokeThickness="0" LabelPosition="OutsideSlice" DataLabels="True" Title="设备温度"/>
-                            <lcw:PieSeries Values="20" StrokeThickness="0" LabelPosition="OutsideSlice" DataLabels="True" Title="震动"/>
-                            <lcw:PieSeries Values="25" StrokeThickness="0" LabelPosition="OutsideSlice" DataLabels="True" Title="水温"/>
-                            <lcw:PieSeries Values="20" StrokeThickness="0" LabelPosition="OutsideSlice" DataLabels="True" Title="工作时间"/>
+                            <lcw:PieSeries Values="19" StrokeThickness="0" LabelPosition="OutsideSlice" DataLabels="True" Title="Pressure"/>
+                            <lcw:PieSeries Values="20" StrokeThickness="0" LabelPosition="OutsideSlice" DataLabels="True" Title="Illumination"/>
+                            <lcw:PieSeries Values="50" StrokeThickness="0" LabelPosition="OutsideSlice" DataLabels="True" Title="Equipment Temp"/>
+                            <lcw:PieSeries Values="20" StrokeThickness="0" LabelPosition="OutsideSlice" DataLabels="True" Title="Vibration"/>
+                            <lcw:PieSeries Values="25" StrokeThickness="0" LabelPosition="OutsideSlice" DataLabels="True" Title="Water Temp"/>
                         </lcw:PieChart.Series>                                                   
                     </lcw:PieChart>
                 </GroupBox>
@@ -327,7 +324,7 @@
             <!--third column-->
             <UniformGrid  Grid.Column="2" Columns="1" Margin="10,0">
                 <!--third column first row-->
-                <GroupBox Header="设备">
+                <GroupBox Header="Equipment" FontWeight="Normal">
                     <ItemsControl ItemsSource="{Binding DeviceMonitors}" VerticalAlignment="Center">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -346,12 +343,120 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </GroupBox>
+                
                 <!--third column second row-->
-                <GroupBox Header="能耗">
-                    
+                <GroupBox Header="Energy Consumption" FontWeight="Normal">
+                    <adc:RadarChart ItemsSources="{Binding RadarData}"/>
                 </GroupBox>
-                <GroupBox Header="人力" />
+                
+                <!--third column third row-->
+                <GroupBox Header="Manpower" FontWeight="Normal">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="1.8*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel VerticalAlignment="Center" Margin="0,20,0,0">
+                            <TextBlock Text="1600" HorizontalAlignment="Center" Foreground="#99FFFFFF" FontSize="25" FontWeight="Normal"/>
+                            <TextBlock Text="On-duty" HorizontalAlignment="Center" FontSize="13" Foreground="#55FFFFFF"
+                                       Margin="0,5" FontWeight="Bold"/>
+                        </StackPanel>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Text="Absence" VerticalAlignment="Center" Foreground="#18AABD" />
+                            <ItemsControl ItemsSource="{Binding PersonalList}" Grid.Row="1">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Height="23">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="10"/>
+                                                <ColumnDefinition Width="50"/>
+                                                <ColumnDefinition Width="60"/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+                                            <Border Width="5" Height="5" CornerRadius="5" Background="Orange" HorizontalAlignment="Left"/>
+                                            <TextBlock Text="{Binding Name}" Grid.Column="1" VerticalAlignment="Center"
+                                                       HorizontalAlignment="Left" FontSize="11" Foreground="#99FFFFFF"/>
+                                            <TextBlock Text="{Binding Position}" Grid.Column="2" VerticalAlignment="Center"
+                                                       HorizontalAlignment="Left" FontSize="11" Foreground="#99FFFFFF"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="3">
+                                                <Border Background="#AA2BEDF1" Height="3" Width="70"/>
+                                                <TextBlock Text="{Binding WorkingHours}" VerticalAlignment="Center" FontSize="9"
+                                                           Foreground="#99FFFFFF" Margin="5,0"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Grid>
+                    </Grid>
+                </GroupBox>
             </UniformGrid>
         </Grid>
+        
+        <!--third row-->
+        <ItemsControl ItemsSource="{Binding WorkShopList}" Grid.Row="2" Margin="10,0">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="1" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="#9918AABD" BorderThickness="0,1,0,0" Background="#0A18AABD"
+                            Margin="10,5">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <!--1-->
+                            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Name}" VerticalAlignment="Center" HorizontalAlignment="Left"
+                                       Foreground="#18AABD" Margin="10,0"/>
+                            <!--2-->
+                            <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right"
+                                       Margin="15,0,5,0">
+                                <Hyperlink Foreground="#33FFFFFF" TextDecorations="None">
+                                    [Details]
+                                </Hyperlink>
+                            </TextBlock>
+                            <!--3-->
+                            <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0">
+                                <TextBlock Text="Total" Foreground="#55FFFFFF" FontSize="15" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                <TextBlock Text="{Binding TotalMachineCount}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24" Margin="0,5" Foreground="#99FFFFFF"/>
+                            </StackPanel>
+                            <!--4-->
+                            <UniformGrid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+                                <StackPanel>
+                                    <TextBlock Text="{Binding OperatingMachineCount}" HorizontalAlignment="Center" FontSize="16" Foreground="LightSeaGreen" FontWeight="Normal"/>
+                                    <TextBlock Text="Operation" HorizontalAlignment="Center" Foreground="#55FFFFFF"/>
+                                </StackPanel>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding WaitingMachineCount}" HorizontalAlignment="Center" FontSize="16" Foreground="DarkOrange" FontWeight="Normal"/>
+                                    <TextBlock Text="Waiting" HorizontalAlignment="Center" Foreground="#55FFFFFF"/>
+                                </StackPanel>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding MalfunctionCount}" HorizontalAlignment="Center" FontSize="16" Foreground="DarkRed" FontWeight="Normal"/>
+                                    <TextBlock Text="Malfunction" HorizontalAlignment="Center" Foreground="#55FFFFFF"/>
+                                </StackPanel>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding ShutdownCount}" HorizontalAlignment="Center" FontSize="16" Foreground="Gray" FontWeight="Normal"/>
+                                    <TextBlock Text="Shutdown" HorizontalAlignment="Center" Foreground="#55FFFFFF"/>
+                                </StackPanel>
+                            </UniformGrid>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </UserControl>
