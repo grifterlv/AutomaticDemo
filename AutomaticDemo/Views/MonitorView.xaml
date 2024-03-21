@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutomaticDemo.Views"
              xmlns:lcw="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             xmlns:adc="clr-namespace:AutomaticDemo.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="650" d:DesignWidth="1100">
     <UserControl.Resources>
@@ -101,7 +102,7 @@
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
 
-                <TextBlock Text="生产&#13;计数" VerticalAlignment="Center" Foreground="#99FFFFFF"
+                <TextBlock Text="生产计数" VerticalAlignment="Center" Foreground="#99FFFFFF"
                            Margin="20,0,10,0" />
                 <ItemsControl ItemsSource="{Binding ProductionCount}" ItemTemplate="{StaticResource dataTemp}">
                     <ItemsControl.ItemsPanel>
@@ -129,7 +130,7 @@
             </Button>
         </Grid>
 
-
+        <!--second row-->
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -139,6 +140,7 @@
             
             <!--first column-->
             <UniformGrid Columns="1" Margin="10,0">
+                
                 <GroupBox Header="环境">
                     <ItemsControl ItemsSource="{Binding EnvironmentalMonitors}" VerticalAlignment="Center">
                         <ItemsControl.ItemsPanel>
@@ -158,6 +160,7 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </GroupBox>
+                
                 <GroupBox Header="产能">
                     <Grid>
                         <lcw:CartesianChart Margin="10,35,10,2">
@@ -201,10 +204,11 @@
                             <Border Width="6" Height="6" Background="#FF2BEDF1" Margin="5,0"/>
                             <TextBlock Text="生产计数" FontSize="10" Foreground="#44FFFFFF"/>
                             <Border Width="6" Height="6" Background="#FFFF5151" Margin="5,0"/>
-                            <TextBlock Text="不良计数"/>
+                            <TextBlock Text="不良计数" FontSize="10" Foreground="#44FFFFFF"/>
                         </StackPanel>
                     </Grid>
                 </GroupBox>
+                
                 <GroupBox Header="质量">
                     <lcw:CartesianChart Margin="10,35,10,2">
                         <lcw:CartesianChart.Series>
@@ -237,25 +241,116 @@
             </UniformGrid>
 
             <!--second column-->
+            <!--first row of second column-->
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
-                    <RowDefinition Height="120"/>
+                    <RowDefinition Height="150"/>
                     <RowDefinition Height="1.5*"/>
                 </Grid.RowDefinitions>
-                <Border Width="400" Height="150" Grid.RowSpan="2" VerticalAlignment="Top"
+                <Border Width="400" Height="220" Grid.RowSpan="2" VerticalAlignment="Top"
                         HorizontalAlignment="Right">
                     <Border.Background>
                         <ImageBrush ImageSource="../Assets/Images/device.png" Stretch="Uniform"/>
                     </Border.Background>
                 </Border>
+                
+                <!--second row of second column-->
+                <Grid Grid.Row="1" Margin='0,40,0,0'>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#99FFFFFF"
+                               FontWeight="Normal">
+                        <Run Text="&#xe004;" FontFamily="../Assets/Fonts/#Material Icons" BaselineAlignment="Center"/>
+                        <Run Text="报警记录"/>
+                    </TextBlock>
+
+                    <ItemsControl Grid.Row="1" ItemsSource="{Binding AlarmsList}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Height="23">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="20"/>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="1.3*"/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="0.5*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border Width="6" Height="6" Background="IndianRed" CornerRadius="3"
+                                            VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Num}" Grid.Column="1" VerticalAlignment="Center"
+                                               HorizontalAlignment="Center" Foreground="#992BEDF1" FontWeight="Normal"/>
+                                    <TextBlock Text="{Binding Message}" Grid.Column="2" VerticalAlignment="Center"
+                                               Foreground="#992BEDF1" FontWeight="Normal"/>
+                                    <TextBlock Text="{Binding Time}" Grid.Column="3" VerticalAlignment="Center"
+                                               Foreground="#992BEDF1" FontWeight="Normal"/>
+                                    <TextBlock Text="{Binding Duration, StringFormat=时长{0}秒}" Grid.Column="4" VerticalAlignment="Center"
+                                               HorizontalAlignment="Center" Foreground="#992BEDF1" FontWeight="Normal"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+
+                <!--third row of second column-->
+                <GroupBox Grid.Row="2" Header="数据异常报警比例" Margin="0,5">
+                    <lcw:PieChart InnerRadius="45" Margin="0,40,0,20">
+                        <lcw:PieChart.Resources>
+                            <Style TargetType="lcw:PieSeries">
+                                <Setter Property="DataLabelsTemplate">
+                                    <Setter.Value>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal" TextBlock.Foreground="#66FFFFFF">
+                                                <TextBlock Text="{Binding Point.SeriesView.Title}" Margin="0,0,5,0"/>
+                                                <TextBlock Text="{Binding Point.SeriesView.Values[0]}" HorizontalAlignment="Center"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </lcw:PieChart.Resources>
+                        <lcw:PieChart.Series>
+                            <lcw:PieSeries Values="19" StrokeThickness="0" LabelPosition="OutsideSlice" DataLabels="True" Title="压差"/>
+                            <lcw:PieSeries Values="20" StrokeThickness="0" LabelPosition="OutsideSlice" DataLabels="True" Title="光照"/>
+                            <lcw:PieSeries Values="50" StrokeThickness="0" LabelPosition="OutsideSlice" DataLabels="True" Title="设备温度"/>
+                            <lcw:PieSeries Values="20" StrokeThickness="0" LabelPosition="OutsideSlice" DataLabels="True" Title="震动"/>
+                            <lcw:PieSeries Values="25" StrokeThickness="0" LabelPosition="OutsideSlice" DataLabels="True" Title="水温"/>
+                            <lcw:PieSeries Values="20" StrokeThickness="0" LabelPosition="OutsideSlice" DataLabels="True" Title="工作时间"/>
+                        </lcw:PieChart.Series>                                                   
+                    </lcw:PieChart>
+                </GroupBox>
+
             </Grid>
             
             <!--third column-->
             <UniformGrid  Grid.Column="2" Columns="1" Margin="10,0">
-                <GroupBox Header="环境" />
-                <GroupBox Header="产能" />
-                <GroupBox Header="质量" />
+                <!--third column first row-->
+                <GroupBox Header="设备">
+                    <ItemsControl ItemsSource="{Binding DeviceMonitors}" VerticalAlignment="Center">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="4"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,1">
+                                    <TextBlock Text="{Binding MonitorValue}" HorizontalAlignment="Center"
+                                               FontSize="16" FontWeight="Normal" Foreground="#FF2BEDF1" Margin="0,5"/>
+                                    <TextBlock Text="{Binding MonitorHeader}" Foreground="#AAFFFFFF"
+                                               FontSize="10"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </GroupBox>
+                <!--third column second row-->
+                <GroupBox Header="能耗">
+                    
+                </GroupBox>
+                <GroupBox Header="人力" />
             </UniformGrid>
         </Grid>
     </Grid>
