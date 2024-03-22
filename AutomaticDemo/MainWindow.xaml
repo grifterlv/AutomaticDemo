@@ -55,11 +55,11 @@
         <Border BorderBrush="#5518AABD" BorderThickness="0,0,0,1">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="200"/>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Image Source="/Assets/Images/Logo.png" />
+                <Image Source="/Assets/Images/Logo1.png"  Margin="10,0"/>
                 <StackPanel Grid.Column="1" VerticalAlignment="Center">
                     <TextBlock Text="{Binding Title, ElementName=Window}"
                                Foreground="White" FontSize="16"/>

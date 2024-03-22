@@ -15,6 +15,7 @@
     <None Remove="Assets\Images\device.jpg" />
     <None Remove="Assets\Images\device.png" />
     <None Remove="Assets\Images\Logo.png" />
+    <None Remove="Assets\Images\Logo1.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,6 +28,7 @@
     <Resource Include="Assets\Fonts\settings.png" />
     <Resource Include="Assets\Images\device.png" />
     <Resource Include="Assets\Images\Logo.png" />
+    <Resource Include="Assets\Images\Logo1.png" />
   </ItemGroup>
 
 </Project>

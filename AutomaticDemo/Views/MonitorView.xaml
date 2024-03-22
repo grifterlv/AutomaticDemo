@@ -125,7 +125,8 @@
 
             <Button Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" 
                     Margin="20,0" Content="Settings" Tag="&#xe8b8;" Style="{StaticResource ButtonStyle}"
-                    Height="33" Width="100" FontWeight="Normal"/>
+                    Height="33" Width="100" FontWeight="Normal"
+                    Command="{Binding SettingsCommand, RelativeSource={RelativeSource AncestorType=Window}}"/>
         </Grid>
 
         <!--second row-->

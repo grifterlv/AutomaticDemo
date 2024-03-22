@@ -24,6 +24,7 @@ namespace AutomaticDemo
         public Command DetailsCommand { get; set; }
 
         public Command BackCommand { get; set; }
+        public Command SettingsCommand { get; set; }
         public MainWindow()
         {
             InitializeComponent();
@@ -33,6 +34,7 @@ namespace AutomaticDemo
             
             DetailsCommand = new Command(ExecuteDetailsCommand);
             BackCommand = new Command(ExecuteBackCommand);
+            SettingsCommand = new Command(ExecuteSettingsCommand);
 
         }
         private void ExecuteDetailsCommand(object obj)
@@ -76,6 +78,11 @@ namespace AutomaticDemo
             storyboard.Children.Add(doubleAnimation);
 
             storyboard.Begin();
+        }
+
+        private void ExecuteSettingsCommand(object obj)
+        {
+            new SettingsWindow() { Owner = this }.ShowDialog();
         }
     }
 }
