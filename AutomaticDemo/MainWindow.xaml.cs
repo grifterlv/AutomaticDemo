@@ -22,6 +22,8 @@ namespace AutomaticDemo
     {
         MainViewModel mainViewModel = new MainViewModel();
         public Command DetailsCommand { get; set; }
+
+        public Command BackCommand { get; set; }
         public MainWindow()
         {
             InitializeComponent();
@@ -30,6 +32,8 @@ namespace AutomaticDemo
             mainViewModel.PageContent = new MonitorView();
             
             DetailsCommand = new Command(ExecuteDetailsCommand);
+            BackCommand = new Command(ExecuteBackCommand);
+
         }
         private void ExecuteDetailsCommand(object obj)
         {
@@ -51,6 +55,24 @@ namespace AutomaticDemo
 
             Storyboard storyboard = new Storyboard();
             storyboard.Children.Add(thicknessAnimation);
+            storyboard.Children.Add(doubleAnimation);
+
+            storyboard.Begin();
+        }
+
+        private void ExecuteBackCommand(object obj)
+        {
+            MonitorView monitorView = new MonitorView();
+            mainViewModel.PageContent = monitorView;
+
+
+            // opacity animation
+            DoubleAnimation doubleAnimation = new DoubleAnimation(0, 1, new TimeSpan(0, 0, 0, 0, 400));
+
+            Storyboard.SetTarget(doubleAnimation, monitorView);
+            Storyboard.SetTargetProperty(doubleAnimation, new PropertyPath("Opacity"));
+
+            Storyboard storyboard = new Storyboard();
             storyboard.Children.Add(doubleAnimation);
 
             storyboard.Begin();

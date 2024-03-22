@@ -40,7 +40,8 @@
         <Border Background="#1118AABD" Margin="10,5"/>
         <Border Background="#1118AABD" Margin="10,5" Grid.Row="1"/>
         <Button Content="Back" Tag="&#xe5c4;" Style="{StaticResource ButtonStyle}"
-                Height="28" Width="80" HorizontalAlignment="Left" Margin="20,0"/>
+                Height="28" Width="80" HorizontalAlignment="Left" Margin="20,0"
+                Command="{Binding BackCommand, RelativeSource={RelativeSource AncestorType=Window}}"/>
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right"
                     Margin="20,0">
