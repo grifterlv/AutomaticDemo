@@ -4,13 +4,117 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AutomaticDemo.Views"
+             xmlns:adc="clr-namespace:AutomaticDemo.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="RadioButton">
+            <Setter Property="Width" Value="78"/>
+            <Setter Property="Height" Value="22"/>
+            <Setter Property="Foreground" Value="#33FFFFFF"/>
+            <Setter Property="Background" Value="#22FFFFFF"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Background" Value="Orange"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Text="WorkShop" Foreground="White" FontSize='30'/>
+        <Border Background="#1118AABD" Margin="10,5"/>
+        <Border Background="#1118AABD" Margin="10,5" Grid.Row="1"/>
+        <Button Content="Back" Tag="&#xe5c4;" Style="{StaticResource ButtonStyle}"
+                Height="28" Width="80" HorizontalAlignment="Left" Margin="20,0"/>
+
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right"
+                    Margin="20,0">
+            <TextBlock Text="Machine Status: " Foreground="White" VerticalAlignment="Center"
+                       FontWeight="Normal"/>
+            <RadioButton Content="All" IsChecked="True"/>
+            <RadioButton Content="Operating"/>
+            <RadioButton Content="Waiting"/>
+            <RadioButton Content="Malfunction"/>
+            <RadioButton Content="Shutdown"/>
+        </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="1" Margin="10,5">
+            <ItemsControl Margin="10,5" ItemsSource="{Binding MachineList}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="5" >
+                        </UniformGrid>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="#9918AABD" BorderThickness="0,1,0,0" Background="#0A18AABD"
+                                Height="260" Margin="10,5">
+                            <Grid TextBlock.FontSize="11">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition/>
+                                    <RowDefinition Height="22"/>
+                                    <RowDefinition Height="22"/>
+                                    <RowDefinition Height="22"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock VerticalAlignment="Center" FontSize="20" Foreground="#AAFFFFFF"
+                                           Margin="20,0">
+                                <Run Text="&#xf049;" FontFamily="../Assets/Fonts/#Material Icons"/>
+                                <Run Text="{Binding Name}" FontSize="15"/>
+                                </TextBlock>
+
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                    <Border Background="LightGreen" Width="7" Height="7" CornerRadius="4"/>
+                                    <TextBlock Text="{Binding Status}" Foreground="LightGreen" FontSize="10" Margin="10,0"/>
+                                </StackPanel>
+
+                                <adc:CicularProgressBar Value="{Binding ProgressValue}" Grid.Row="1"
+                                                        Margin="30"/>
+                                
+                                <StackPanel Orientation="Horizontal" Grid.Row="2" VerticalAlignment="Center" Margin="15,0">
+                                    <TextBlock Text="Status: " Foreground="#55FFFFFF" Margin="0,0,15,0" FontWeight="Normal"/>
+                                    <Label Content="{Binding Status}" BorderBrush="LightGreen" BorderThickness="1"
+                                           Padding="5,1" Foreground="LightGreen" FontSize="10"/>
+                                </StackPanel>
+                                
+                                <StackPanel Orientation="Horizontal" Grid.Row="3" VerticalAlignment="Center" Margin="15,0">
+                                    <TextBlock Text="Progress: " Foreground="#55FFFFFF" Margin="0,0,3,0" FontWeight="Normal"/>
+                                    <TextBlock Foreground="White">
+                                        <Run Text="{Binding ProductionCount}"/>
+                                        <Run Text="/"/>
+                                        <Run Text="{Binding ProductionGoal}"/>
+                                    </TextBlock>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Grid.Row="4" VerticalAlignment="Center" Margin="15,0">
+                                    <TextBlock Text="Order #: " Foreground="#55FFFFFF" Margin="0,0,7,0" FontWeight="Normal"/>
+                                    <TextBlock Text="{Binding OrderNum}" Foreground="White">
+                                    </TextBlock>
+                                </StackPanel>
+                                
+                                <TextBlock Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,0">
+                                       <Hyperlink TextDecorations="None" Foreground="#33FFFFFF"> [Details] </Hyperlink> 
+                                </TextBlock>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
     </Grid>
 </UserControl>

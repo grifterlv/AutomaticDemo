@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="AutomaticDemo.Controls.CicularProgressBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AutomaticDemo.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="80" d:DesignWidth="80">
+    <Grid Name="LayoutRoot" Height="{Binding RelativeSource={RelativeSource Self}, Path=ActualWidth}">
+        <Ellipse Width="{Binding ElementName=LayoutRoot, Path=ActualWidth}"
+                 Height="{Binding ElementName=LayoutRoot, Path=ActualWidth}"
+                 StrokeThickness="8" Stroke="#22FFFFFF"/>
+        <Path Name="path" Stroke="Orange" StrokeThickness="7" StrokeStartLineCap="Round" StrokeEndLineCap='Round'/>
+
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White">
+            <Run Text="{Binding Value, RelativeSource={RelativeSource AncestorType=UserControl}, StringFormat={}{0:###.0}}"
+                 FontSize="22"/>
+            <Run Text="%"/>
+        </TextBlock>
+    </Grid>
+</UserControl>

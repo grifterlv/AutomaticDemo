@@ -55,6 +55,8 @@ namespace AutomaticDemo.ViewModels
 
 		public List<WorkShopItemModel> WorkShopList { get; set; }
 
+		public List<MachineItemModel> MachineList { get; set; }
+
 		public MainViewModel()
         {
             Total = 197.ToString("0000");
@@ -119,6 +121,27 @@ namespace AutomaticDemo.ViewModels
             WorkShopList.Add(new WorkShopItemModel { Name= "Welding Workshop", TotalMachineCount=55, OperatingMachineCount=32, WaitingMachineCount=8, MalfunctionCount=2, ShutdownCount=1});
             WorkShopList.Add(new WorkShopItemModel { Name= "Assembly Workshop", TotalMachineCount=18, OperatingMachineCount=32, WaitingMachineCount=8, MalfunctionCount=2, ShutdownCount=1});
             WorkShopList.Add(new WorkShopItemModel { Name= "Painting Workshop", TotalMachineCount=99, OperatingMachineCount=32, WaitingMachineCount=8, MalfunctionCount=2, ShutdownCount=1});
+			#endregion
+
+			#region initialize Machine List
+			MachineList = new List<MachineItemModel>();
+
+            for (int i = 0; i < 40; i++)
+            {
+
+				int goal = random.Next(100, 1000);
+				int complete = random.Next(0, goal);
+
+                MachineList.Add(new MachineItemModel
+                {
+                    Name = "SMT -" + (i + 1),
+					ProductionCount = complete,
+                    ProductionGoal = goal,
+                    ProgressValue = complete * 1.0 / goal * 100,
+					Status = "In Progress",
+					OrderNum="GD20240322123"
+                });
+            }
             #endregion
         }
     }
