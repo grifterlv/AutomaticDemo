@@ -415,9 +415,9 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <!--1-->
                             <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Name}" VerticalAlignment="Center" HorizontalAlignment="Left"
@@ -425,12 +425,22 @@
                             <!--2-->
                             <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right"
                                        Margin="15,0,5,0">
-                                <Hyperlink Foreground="#33FFFFFF" TextDecorations="None">
+                                <Hyperlink Foreground="#33FFFFFF" TextDecorations="None" 
+                                           Command="{Binding DetailsCommand, RelativeSource={RelativeSource AncestorType=Window}}" 
+                                           CommandParameter="{Binding}">
                                     [Details]
                                 </Hyperlink>
                             </TextBlock>
+                            <Rectangle Grid.Row="1" Grid.Column="0" Width="1" HorizontalAlignment="Right" Margin="0,5, 8, 5">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="#552BEDF1" Offset="0.0"/>
+                                        <GradientStop Color="Transparent" Offset="1.0"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
                             <!--3-->
-                            <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0">
+                            <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,25,0">
                                 <TextBlock Text="Total" Foreground="#55FFFFFF" FontSize="15" HorizontalAlignment="Center" FontWeight="Normal"/>
                                 <TextBlock Text="{Binding TotalMachineCount}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24" Margin="0,5" Foreground="#99FFFFFF"/>
                             </StackPanel>

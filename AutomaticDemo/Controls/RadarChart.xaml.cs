@@ -39,6 +39,7 @@ namespace AutomaticDemo.Controls
 
         private static void OnPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs args)
         {
+            if (args.NewValue == null) return;
             (args.NewValue as ObservableCollection<RadarSeriesModel>).CollectionChanged += (se, ev) =>
             {
                 (d as RadarChart).Refresh();
